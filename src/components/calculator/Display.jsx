@@ -51,7 +51,7 @@ export default function Display({ expression, result, error }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            className="text-right text-white text-3xl md:text-4xl font-semibold tracking-tight mt-1 select-all"
+            className="text-right text-black text-3xl md:text-4xl font-semibold tracking-tight mt-1 select-all"
           >
             = {displayResult}
           </motion.div>

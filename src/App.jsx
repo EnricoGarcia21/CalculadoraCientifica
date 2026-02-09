@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -8,15 +9,36 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
+const useTheme = () => {
+  const [isDark, setIsDark] = useState(true); // Always start in dark mode
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => {
+    setIsDark(prev => !prev);
+  };
+
+  return { isDark, toggleTheme };
+};
+
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
 const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;
 
-const LayoutWrapper = ({ children, currentPageName }) => Layout ?
-  <Layout currentPageName={currentPageName}>{children}</Layout>
+const LayoutWrapper = ({ children, currentPageName, isDark, toggleTheme }) => Layout ?
+  <Layout currentPageName={currentPageName} isDark={isDark} toggleTheme={toggleTheme}>{children}</Layout>
   : <>{children}</>;
 
-const AuthenticatedApp = () => {
+
+const AuthenticatedApp = ({ isDark, toggleTheme }) => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
   // Show loading spinner while checking app public settings or auth
@@ -43,7 +65,7 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/" element={
-        <LayoutWrapper currentPageName={mainPageKey}>
+        <LayoutWrapper currentPageName={mainPageKey} isDark={isDark} toggleTheme={toggleTheme}>
           <MainPage />
         </LayoutWrapper>
       } />
@@ -52,7 +74,7 @@ const AuthenticatedApp = () => {
           key={path}
           path={`/${path}`}
           element={
-            <LayoutWrapper currentPageName={path}>
+            <LayoutWrapper currentPageName={path} isDark={isDark} toggleTheme={toggleTheme}>
               <Page />
             </LayoutWrapper>
           }
@@ -65,18 +87,20 @@ const AuthenticatedApp = () => {
 
 
 function App() {
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <NavigationTracker />
-          <AuthenticatedApp />
+          <AuthenticatedApp isDark={isDark} toggleTheme={toggleTheme} />
         </Router>
         <Toaster />
       </QueryClientProvider>
     </AuthProvider>
   )
 }
+
 
 export default App

@@ -34,9 +34,9 @@ export default function ThemeToggle({ isDark, onToggle }) {
         `}
       >
         {isDark ? (
-          <Moon className="w-3.5 h-3.5 text-white" />
+          <Moon className="w-3.5 h-3.5 text-black" />
         ) : (
-          <Sun className="w-3.5 h-3.5 text-white" />
+          <Sun className="w-3.5 h-3.5 text-black" />
         )}
       </motion.div>
     </button>

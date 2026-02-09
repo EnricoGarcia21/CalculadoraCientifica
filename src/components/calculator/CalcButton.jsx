@@ -3,14 +3,24 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const variants = {
-  number: 'bg-white/[0.07] hover:bg-white/[0.13] text-white border-white/[0.06]',
-  operator: 'bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border-blue-500/10',
-  function: 'bg-violet-500/15 hover:bg-violet-500/25 text-violet-300 border-violet-500/10',
-  action: 'bg-orange-500/20 hover:bg-orange-500/30 text-orange-300 border-orange-500/10',
-  equals: 'bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white shadow-lg shadow-blue-500/25 border-blue-400/20',
-  danger: 'bg-red-500/15 hover:bg-red-500/25 text-red-300 border-red-500/10',
+  // Aumentamos a opacidade do fundo e garantimos texto escuro/forte
+  number: 'bg-white/90 hover:bg-white text-slate-800 border-slate-200 shadow-sm',
+  
+  // Cores mais sólidas para operadores
+  operator: 'bg-blue-100 hover:bg-blue-200 text-blue-700 border-blue-200 font-bold',
+  
+  // Violeta mais nítido
+  function: 'bg-violet-100 hover:bg-violet-200 text-violet-700 border-violet-200',
+  
+  // Laranja com texto mais escuro para leitura
+  action: 'bg-orange-100 hover:bg-orange-200 text-orange-800 border-orange-200',
+  
+  // O botão de igual já é forte, mas garantimos o gradiente vibrante
+  equals: 'bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white shadow-md border-blue-500',
+  
+  // Vermelho de perigo (Clear/AC)
+  danger: 'bg-red-100 hover:bg-red-200 text-red-700 border-red-200',
 };
-
 export default function CalcButton({ label, onClick, variant = 'number', span = 1, className }) {
   return (
     <motion.button
