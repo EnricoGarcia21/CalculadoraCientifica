@@ -1,4 +1,3 @@
-// Minimal API client to replace Base44 SDK usage.
 import { appParams } from '@/lib/app-params';
 
 const safeJson = async (res) => {
@@ -9,7 +8,7 @@ const safeJson = async (res) => {
 export const apiClient = {
   auth: {
     me: async () => {
-      // Try common endpoint for current user. Caller handles thrown errors.
+     
       const res = await fetch('/api/auth/me', { credentials: 'include', headers: { 'X-App-Id': appParams.appId } });
       if (!res.ok) {
         const err = new Error('Not authenticated');
@@ -37,7 +36,7 @@ export const apiClient = {
           body: JSON.stringify({ page: pageName })
         });
       } catch (e) {
-        // Swallow errors; logging must not break the app
+     
       }
     }
   }
