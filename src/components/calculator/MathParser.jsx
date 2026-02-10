@@ -1,9 +1,4 @@
-/**
- * Custom Mathematical Expression Parser
- * Implements the Shunting Yard algorithm by Dijkstra
- * Converts infix expressions to postfix (RPN) and evaluates them
- * No eval() or external math libraries used
- */
+
 
 const CONSTANTS = {
   'π': Math.PI,

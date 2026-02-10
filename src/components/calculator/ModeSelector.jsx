@@ -10,7 +10,7 @@ const modes = [
 
 export default function ModeSelector({ mode, onChange }) {
   return (
-    <div className="flex bg-white/5 rounded-xl p-1 border border-white/5">
+    <div className="flex bg-slate-900 rounded-xl p-1 border border-slate-800 shadow-inner">
       {modes.map((m) => (
         <button
           key={m.key}

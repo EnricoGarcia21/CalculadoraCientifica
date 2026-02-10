@@ -101,10 +101,12 @@ export default function Calculator() {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-[100px] bg-violet-300/20" />
       </div>
 
-      <div className="relative w-full max-w-md mx-auto rounded-3xl overflow-hidden bg-white/80 border border-slate-200 shadow-2xl shadow-slate-300/50 backdrop-blur-xl">
+      <div className="relative w-full max-w-md mx-auto rounded-3xl overflow-hidden
+  bg-slate-900/90 border border-slate-800
+  shadow-2xl shadow-black/50 backdrop-blur-xl">
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
-          <h1 className="text-sm font-semibold tracking-widest uppercase text-slate-400">
+          <h1 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-slate-500">
             Calculadora
           </h1>
         </div>

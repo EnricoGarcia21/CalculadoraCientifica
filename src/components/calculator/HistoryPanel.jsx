@@ -11,10 +11,12 @@ export default function HistoryPanel({ history, onSelect, onClear, onClose }) {
       exit={{ x: '100%' }}
       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
       className="absolute inset-0 z-20 flex flex-col
-        bg-slate-950/98 backdrop-blur-xl rounded-3xl overflow-hidden"
+          bg-slate-900 rounded-3xl overflow-hidden
+          border border-slate-800 shadow-2xl"
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
+      <div className="flex items-center justify-between px-5 py-4
+  border-b border-slate-800 bg-slate-900/95">
         <div className="flex items-center gap-2.5">
           <Clock className="w-4 h-4 text-blue-400" />
           <h3 className="text-white font-medium text-sm tracking-wide">Histórico</h3>

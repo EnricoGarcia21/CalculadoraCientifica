@@ -19,10 +19,10 @@ export default function Display({ expression, result, error }) {
       bg-gradient-to-br from-slate-900 to-slate-800 dark:from-black dark:to-slate-900
       shadow-[inset_0_2px_20px_rgba(0,0,0,0.3)] border border-white/5">
       
-      {/* Subtle glow effect */}
+      {}
       <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl" />
       
-      {/* Expression line */}
+      {}
       <div
         ref={exprRef}
         className="text-right overflow-x-auto whitespace-nowrap scrollbar-none pb-1
@@ -51,7 +51,7 @@ export default function Display({ expression, result, error }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            className="text-right text-black text-3xl md:text-4xl font-semibold tracking-tight mt-1 select-all"
+            className="text-right text-slate-100 text-3xl md:text-4xl font-semibold tracking-tight mt-1 select-all"
           >
             = {displayResult}
           </motion.div>
